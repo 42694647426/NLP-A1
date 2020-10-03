@@ -15,6 +15,8 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score
 from sklearn.metrics import plot_confusion_matrix
+from sklearn.naive_bayes import GaussianNB
+
 # load text data
 df_neg = pd.read_csv('rt-polaritydata\\rt-polarity.neg',sep='\t', encoding='latin-1', header=None)
 df_pos = pd.read_csv('rt-polaritydata\\rt-polarity.pos',sep='\t', encoding='latin-1', header=None)
@@ -122,7 +124,10 @@ NaiveBayes.show_most_informative_features(15)
 #f1 = f1_score(labels=['neg', 'pos'], average='micro')
 #print(f1)
 
-plot_confusion_matrix(NaiveBayes, X_test, Y_test)  
+clf = GaussianNB()
+clf.fit(X_train, Y_train)
+
+plot_confusion_matrix(clf, X_test, Y_test)  
 plt.show() 
 
 #all_words = [(R, S) for R, S in df.iterrows()]
