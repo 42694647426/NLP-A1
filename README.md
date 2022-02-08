@@ -1,2 +1,2 @@
 # NLP-A1
-[:warning:]
+:warning:
